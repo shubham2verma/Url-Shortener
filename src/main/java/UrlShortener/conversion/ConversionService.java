@@ -1,14 +1,14 @@
 package UrlShortener.conversion;
 
-import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class ConversionService {
-	
+
 	HashMap<String, String> map = new HashMap<>();
-	Integer number = 1000000000;
+	Long number = 1000000000L;
 	String domain = "https://www.urlShortener.com/";
 	String errorMsg = "Invalid URL has been sent for the conversion";
 	
@@ -71,10 +71,10 @@ public class ConversionService {
 		
 		String str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String shortUrl = "";
-		Integer num = number;
+		Long num = number;
 		
 		while(num > 0) {
-			shortUrl += str.charAt(num % 62);
+			shortUrl += str.charAt((int)(num % 62));
 			num /= 62;
 		}
 		
@@ -85,5 +85,4 @@ public class ConversionService {
 	public void storeInMap(String shortUrl, String longUrl) {
 		map.put(longUrl, shortUrl);
 	}
-	
 }
