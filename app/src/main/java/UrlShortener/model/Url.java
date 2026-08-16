@@ -25,6 +25,9 @@ public class Url {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    @Column(name = "click_count", nullable = false)
+    private long clickCount = 0;
+
     public Url() {}
 
     public Url(String longUrl) {
@@ -40,4 +43,6 @@ public class Url {
     public void setShortCode(String shortCode) { this.shortCode = shortCode; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
+
+    public long getClickCount() { return clickCount; }
 }
